@@ -26,7 +26,8 @@ def index():
         return f"command successfully set to {uuiddict[uuid]}"
     if result is not None:
         print(requests.utils.unquote(result))
-        requests.post(out, json={"content":requests.utils.unquote(result)})
+        resp = requests.post(out, json={"content":requests.utils.unquote(result)})
+        print(resp.text)
         return ""
     else:
         try:
