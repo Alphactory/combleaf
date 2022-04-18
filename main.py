@@ -1,3 +1,5 @@
+import os
+
 import flask
 import requests
 
@@ -16,7 +18,7 @@ def index():
     uuid = flask.request.args.get("uuid")
     cmdtest = flask.request.args.get('cmd')
     result = flask.request.args.get('result')
-    out = "https://discord.com/api/webhooks/965462201571901451/gnjdHGVio1WNU74693tWVdbco3-BR5ZaXj-IL7pj5XmNnWktjU7AJn1AKAkZ8nomTie1"
+    out = os.getenv("DISCORDAPIKEY")
 
     if cmdtest is not None:
         uuiddict[uuid] = cmdtest
